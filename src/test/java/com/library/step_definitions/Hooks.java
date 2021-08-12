@@ -1,6 +1,7 @@
 package com.library.step_definitions;
 
 
+import com.library.utilities.DBUtils;
 import com.library.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -14,7 +15,7 @@ public class Hooks {
 
     @Before()
     public void setUp(){
-        System.out.println("\tthis is coming from BEFORE");
+        System.out.println("\tthis is coming from before hook");
         Driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Driver.get().manage().window().maximize();
 
@@ -28,7 +29,20 @@ public class Hooks {
         }
 
         Driver.closeDriver();
+        System.out.println("After hook close driver");
+    }
 
+    @Before("@db")
+    public void setUpDB(){
+        System.out.println("creating database conneciton...");
+        DBUtils.createConnection();
+
+    }
+
+    @After("@db")
+    public void tearDownDb(){
+        System.out.println("ending database connection...");
+        DBUtils.destroy();
     }
 
 
