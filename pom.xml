@@ -48,10 +48,12 @@
             <artifactId>webdrivermanager</artifactId>
             <version>4.1.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.18</version>
+            <version>8.0.29</version>
         </dependency>
+
     </dependencies>
 </project>
